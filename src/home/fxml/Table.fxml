@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?language javascript?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<StackPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.controllers.TableController">
+   <children>
+      <BorderPane prefHeight="600.0" prefWidth="800.0">
+      
+      <!-- 상단 Label -->
+         <top>
+            <Pane prefHeight="150.0" style="-fx-background-color: #646465;" BorderPane.alignment="CENTER">
+            	<children>
+            	<Label layoutX="48.0" layoutY="28.0" text="Select Lecture" textFill="WHITE">
+            	<font>
+              	    <Font name="Arial" size="60.0" />
+             	 </font>
+             	 </Label>
+            	<Label layoutX="61.0" layoutY="97.0" text="Learning Management System" textFill="WHITE">
+               	<font>
+                	  <Font name="Arial" size="22.0" />
+               	</font>
+            	</Label>
+         </children></Pane>
+         </top>
+         
+         <!-- 중앙 Panel -->
+         <center>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               
+               <!-- 상단 Control Bar -->
+               <top>
+                  <GridPane alignment="CENTER" BorderPane.alignment="CENTER">
+                    <columnConstraints>
+                      <ColumnConstraints halignment="CENTER" prefWidth="170.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" prefWidth="170.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" prefWidth="170.0" />
+                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="340.0" minWidth="10.0" prefWidth="150.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="340.0" minWidth="10.0" prefWidth="60.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="340.0" minWidth="10.0" prefWidth="60.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                    	<ComboBox fx:id="campusPickBox" prefWidth="150.0" promptText="Campus" />
+                        <ComboBox fx:id="collegePickBox" prefWidth="150.0" promptText="College" GridPane.columnIndex="1" />
+                        <ComboBox fx:id="departmentPickBox" prefWidth="150.0" promptText="Department" GridPane.columnIndex="2" />
+                        <Label text="Confirm" textAlignment="CENTER" GridPane.columnIndex="3">
+                           <font>
+                              <Font name="Arial" size="24.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="lectureToBasket" mnemonicParsing="false" style="-fx-graphic: url('images/LectureToBasket_Gray.png'); -fx-background-color:transparent" GridPane.columnIndex="4" />
+                        <Button fx:id="lectureRefresh" mnemonicParsing="false" style="-fx-graphic: url('images/Refresh_Gray.png'); -fx-background-color:transparent" GridPane.columnIndex="5" />
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" top="5.0" />
+                     </padding>
+                  </GridPane>
+               </top>
+               
+               <center>
+                  <TableView fx:id="lectureTable" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER">
+                   
+                    <!-- TableView Column -->
+                    <columns>
+                      <TableColumn fx:id="numberColumn" maxWidth="3300.0" minWidth="-1.0" prefWidth="-1.0" style="-fx-alignment:CENTER;" text="Number" />
+                      <TableColumn fx:id="nameColumn" maxWidth="6000.0" minWidth="-1.0" prefWidth="-1.0" text="Name" />
+                      <TableColumn fx:id="professorColumn" maxWidth="4000.0" minWidth="-1.0" prefWidth="-1.0" style="-fx-alignment:CENTER;" text="Professor" />
+                      <TableColumn fx:id="creditColumn" maxWidth="2800.0" minWidth="-1.0" prefWidth="-1.0" style="-fx-alignment:CENTER;" text="Credit" />
+                      <TableColumn fx:id="timeColumn" maxWidth="5500.0" minWidth="-1.0" prefWidth="-1.0" text="Time" />
+                    </columns>
+                     <padding>
+                        <Insets bottom="10.0" left="5.0" right="5.0" />
+                     </padding>
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </center>
+            </BorderPane>
+         </center>
+         
+         <!-- 좌측 Control Bar -->
+         <left>
+            <GridPane style="-fx-background-color: #a0a0a1;" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="60.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                                 
+                  <!-- Basket 이동 버튼 -->
+                  <Button fx:id="basketMove" mnemonicParsing="false" style="-fx-graphic: url('images/Basket_White.png'); -fx-background-color:transparent" GridPane.rowIndex="0" />
+                  
+                  <!-- User Information 버튼 -->
+                  <Button fx:id="userMove" mnemonicParsing="false" style="-fx-graphic:url('images/UserInfo_White.png'); -fx-background-color:transparent" GridPane.rowIndex="1" />
+                 
+                  <!-- Logout 버튼 -->
+                  <Button fx:id="loginMove" mnemonicParsing="false" style="-fx-graphic: url('images/Logout_White.png'); -fx-background-color:transparent" GridPane.rowIndex="2" />
+               </children>
+               <padding>
+                  <Insets bottom="200.0" top="10.0" />
+               </padding>
+            </GridPane>
+         </left>
+         <bottom>
+            <Label fx:id="userNotification" text="User Notification" textAlignment="CENTER" textFill="#646465" BorderPane.alignment="BOTTOM_RIGHT">
+               <BorderPane.margin>
+                  <Insets right="20.0" />
+               </BorderPane.margin>
+            </Label>
+         </bottom>
+        </BorderPane>
+   </children>
+</StackPane>
